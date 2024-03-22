@@ -181,7 +181,7 @@ X_train[numerical_features].describe().round(4)
 gambar 7
 <br>
 
-<img width="176" alt="Screenshot 2024-03-21 224401" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/f475b4cd-457f-49b3-ab8d-7fedf5696c9a">
+https://ibb.co/B2WHV0y
 <br>
 
 ### Modeling
@@ -260,7 +260,7 @@ Mean Squared Error (MSE) metrik ini mengukur seberapa jauh hasil prediksi dengan
 ```
 tabel 2
 <br>
-<img width="163" alt="Screenshot 2024-03-21 224441" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/5a7ef6f9-9ead-437d-95c4-c73dfec478ab">
+https://ibb.co/ZBczb50
 <br>
 
 
@@ -278,7 +278,8 @@ pd.DataFrame(pred_dict)
 ```
 tabel 3 <br>
 
-<img width="289" alt="Screenshot 2024-03-21 224627" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/04bafd8d-178b-4d99-877a-a66fcbcaac42"> <br>
+https://ibb.co/D7C9gWV
+<br>
 Terlihat bahwa prediksi dengan Random Forest (RF) memberikan hasil yang paling mendekati nilai uji
 
 Referensi Jurnal : <br>
