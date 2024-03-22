@@ -66,12 +66,14 @@ df = '/content/gdrive/MyDrive/Kaggle/FINAL_USO.csv'
 golds = pd.read_csv(df)
 golds
 ```
-![alt text](<Screenshot 2024-03-21 185708-1.png>)
+<img width="886" alt="Screenshot 2024-03-21 185708" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/461c74cd-b871-4c86-abc2-647a961e7d5c"> <br>
 Menampilkan info DataFrame dari dataset
+disini kita bisa melihat typedata yang nantinya sebagai acuan kita kedepannya
 ```
 golds.info()
 ```
-![alt text](<Screenshot 2024-03-21 224103-1.png>)
+<br>
+<img width="242" alt="Screenshot 2024-03-21 224103" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/8b131c60-244c-4f65-9628-2dbfe8c6daff"> <br>
 menampilkan hasil statistik dari dataframe seperti count, mean dll
 ``` 
 golds.describe()
@@ -121,7 +123,8 @@ plt.ylabel('Columns')
 plt.xticks(rotation=45)
 plt.show()
 ```
-![alt text](<download (13)-1.png>)
+
+![download (13)](https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/f2b98eac-8797-48df-ac6e-f967b548ed25) <br>
 
 ### Data Preparation
 disini kita melakukan transformasi pada data sehingga menjadi bentuk yang cocok untuk proses pemodelan
@@ -152,11 +155,12 @@ scaler.fit(X_train[numerical_features])
 X_train[numerical_features] = scaler.transform(X_train.loc[:, numerical_features])
 X_train[numerical_features].head()
 ```
-![alt text](<Screenshot 2024-03-21 224324-1.png>)
+<img width="197" alt="Screenshot 2024-03-21 224324" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/9a12223d-1810-48da-a64b-2ad2719aa286"> <br>
 ```
 X_train[numerical_features].describe().round(4)
 ```
-![alt text](<Screenshot 2024-03-21 224401-1.png>)
+<img width="176" alt="Screenshot 2024-03-21 224401" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/f475b4cd-457f-49b3-ab8d-7fedf5696c9a">
+<br>
 
 ### Modeling
 
@@ -228,7 +232,8 @@ for name, model in model_dict.items():
 # Panggil mse
 mse
 ```
-![alt text](<Screenshot 2024-03-21 224441-1.png>)
+<img width="163" alt="Screenshot 2024-03-21 224441" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/5a7ef6f9-9ead-437d-95c4-c73dfec478ab">
+<br>
 nilai error yang paling kecil yaitu random forest
 
 disini nilai prediksi Random Forest mendekati nilai uji walaupun nilai prediksi model Boasting juga mendekati
@@ -241,5 +246,5 @@ for name, model in model_dict.items():
 
 pd.DataFrame(pred_dict)
 ```
-![alt text](<Screenshot 2024-03-21 224627-1.png>)
+<img width="289" alt="Screenshot 2024-03-21 224627" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/04bafd8d-178b-4d99-877a-a66fcbcaac42"> <br>
 Terlihat bahwa prediksi dengan Random Forest (RF) memberikan hasil yang paling mendekati.
