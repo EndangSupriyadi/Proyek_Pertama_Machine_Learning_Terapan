@@ -1,9 +1,13 @@
 # Laporan Proyek Machine Learning - Endang Supriyadi
 
 ## Domain Proyek
-Emas /Gold merupakan barang yang berharga saat ini,selain sebagai perhiasan emas juga sebagai investasi. tujuan dari sebuah investasi adalah sebuah keuntungan maka banyak orang berinvestasi dengan emas, karena harga emas atau logam mulia cenderung stabil dan beresko rendah dibandingkan dengan investasi lain. Ketika terjadi inflasi harga emas tidak berubah dan cenderung aman. maka dari itu saya ingin menprediksi harga emas dengan machine learning yang nantinya akan menjadi tolak ukur jika ketika saya membeli atau berinvestasi emas.
+Emas /Gold merupakan barang yang berharga saat ini,selain sebagai perhiasan emas juga sebagai investasi. tujuan dari sebuah investasi adalah sebuah keuntungan maka banyak orang berinvestasi dengan emas, karena harga emas atau logam mulia cenderung stabil dan beresko rendah dibandingkan dengan investasi lain. Ketika terjadi inflasi harga emas tidak berubah dan cenderung aman [1]. maka dari itu tujuan dari proyek ini yaitu menprediksi harga emas dengan machine learning dengan beberapa tahapan diantaranya data collection: mengumpulkan data histori harga emas, data processing : mencek apakah data set yang diambil sudah bersih atau masih kotor, melakukan normalisasi fitur, dan pemilihan fitur. Model training : disini menggunakan 3 model machine learning KNN, Random Forest dan Boosting karena agar tau mana model yang efesien untuk proyek ini. Evaluasi Model : Mencek hasil prediksi dari ketiga model itu dan mana prediksi yang lebih akurat
 
-Referensi Jurnal : Analisis Komparasi Algoritma Data Mining Naive Bayes, K-Nearest Neighbors dan Regresi Linier Dalam Prediksi Harga Emas (penulis : Muhammad Muharrom, 2023) link [https://journal.fkpt.org/index.php/BIT/article/view/986/509]
+Referensi Jurnal : <br>
+[1]	M. Muharrom, “Analisis Komparasi Algoritma Data Mining Naive Bayes, K-Nearest Neighbors dan Regresi Linier Dalam Prediksi Harga Emas,” Bull. Inf. Technol., vol. 4, no. 4, pp. 430–438, 2023, doi: 10.47065/bit.v4i4.986.
+
+
+link [https://journal.fkpt.org/index.php/BIT/article/view/986/509]
 
 ## Business Understanding
 1. Problem Statements
