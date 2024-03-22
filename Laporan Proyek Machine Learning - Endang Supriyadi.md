@@ -60,6 +60,9 @@ menampilkan hasil statistik dari dataframe seperti count, mean dll
 golds.describe()
 ```
 <br>
+gambar 2 <br>
+<a href="https://ibb.co/G0gz16s"><img src="https://i.ibb.co/rmnDLjb/Screenshot-2024-03-23-045627.png" alt="Screenshot-2024-03-23-045627" border="0"></a>
+<br>
 
 ### Data Preparation
 <br>
@@ -81,32 +84,32 @@ data open, high, low nilai massing valuenya bernilai 0 jadi dalam fitur itu tida
 
 #### Mengatasi outliers dengan IQR
 yaitu untuk mengidentifikasi outlier yang berada diluar Q1 dan Q3. nilai apapun yang berada diluar batas ini dianggap sebagai outlier
-visualisasi boxplot pada kolom open di gambar 2 akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak
+visualisasi boxplot pada kolom open di gambar 3 akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak
 <br>
 ```
 sns.boxplot(x=golds['Open'])
 ```
 <br>
-gambar 2 <br>
+gambar 3 <br>
 <a href="https://ibb.co/377TDsd"><img src="https://i.ibb.co/wRRd9Lg/Screenshot-2024-03-23-000757.png" alt="Screenshot-2024-03-23-000757" border="0"></a>
 <br>
-visualisasi boxplot pada kolom high di gambar 3akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak 
+visualisasi boxplot pada kolom high di gambar 4 akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak 
 <br>
 
 ```
 sns.boxplot(x=golds['High'])
 ``` 
 <br>
-gambar 3 <br>
+gambar 4 <br>
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/pyQhFsw/Screenshot-2024-03-23-001031.png" alt="Screenshot-2024-03-23-001031" border="0"></a>
 <br>
-visualisasi boxplot pada kolom low di gambar 4 akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak  <br>
+visualisasi boxplot pada kolom low di gambar 5 akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak  <br>
 
 ```
 sns.boxplot(x=golds['Low'])
 ```
 <br>
-gambar 4 <br>
+gambar 5 <br>
 <a href="https://ibb.co/hB70Pv5"><img src="https://i.ibb.co/gSjY5C1/Screenshot-2024-03-23-001128.png" alt="Screenshot-2024-03-23-001128" border="0"></a>
 <br>
 
@@ -131,7 +134,7 @@ golds.shape
 (835, 80)
 
 ```
-menghitung korelasi antara kolom-kolom dalam dataframe goals dan menvisualisasikannya sehingga jika semakin tinggi nilai korelasi semakin kuat hubungan antara kolom target dan kolom yang bersangkutan. di gambar 5 korelasi yang kuat itu kolom high, low, open, close dan adj close. adj close dan close nilainya sama maka boleh pilih salah satu saja. di bawah ini menngunakan target columnnya itu close
+menghitung korelasi antara kolom-kolom dalam dataframe goals dan menvisualisasikannya sehingga jika semakin tinggi nilai korelasi semakin kuat hubungan antara kolom target dan kolom yang bersangkutan. di gambar 6 korelasi yang kuat itu kolom high, low, open, close dan adj close. adj close dan close nilainya sama maka boleh pilih salah satu saja. di bawah ini menngunakan target columnnya itu close
 
 ```
 target_column = 'Close'
@@ -147,7 +150,7 @@ plt.ylabel('Columns')
 plt.xticks(rotation=45)
 plt.show()
 ```
-gambar 5 
+gambar 6 
 <br>
 <a href="https://ibb.co/QbLKxgv"><img src="https://i.ibb.co/mDkcPj5/download-13.png" alt="download-13" border="0"></a>
  <br>
@@ -181,14 +184,14 @@ X_train[numerical_features] = scaler.transform(X_train.loc[:, numerical_features
 X_train[numerical_features].head() <br>
 
 ```
-gambar 6 
+gambar 7 
 <br>
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/895YWpB/Screenshot-2024-03-21-224324.png" alt="Screenshot-2024-03-21-224324" border="0"></a>
 <br>
 ```
 X_train[numerical_features].describe().round(4)
 ```
-gambar 7
+gambar 8
 <br>
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/Jj6WRDv/Screenshot-2024-03-21-224401.png" alt="Screenshot-2024-03-21-224401" border="0"></a>
