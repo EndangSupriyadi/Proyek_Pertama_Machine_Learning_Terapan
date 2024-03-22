@@ -63,6 +63,24 @@ golds.describe()
 gambar 2 <br>
 <a href="https://ibb.co/G0gz16s"><img src="https://i.ibb.co/rmnDLjb/Screenshot-2024-03-23-045627.png" alt="Screenshot-2024-03-23-045627" border="0"></a>
 <br>
+penjelasan : <br>
+Count  adalah jumlah sampel pada data.
+Mean adalah nilai rata-rata.
+Std adalah standar deviasi.
+Min yaitu nilai minimum setiap kolom. 
+25% adalah kuartil pertama. Kuartil adalah nilai yang menandai batas interval dalam empat bagian sebaran yang sama. 
+50% adalah kuartil kedua, atau biasa juga disebut median (nilai tengah).
+75% adalah kuartil ketiga.
+Max adalah nilai maksimum.
+<br>
+
+#### _Univariate Analysis_
+
+Dalam Dataset ini hanya ada satu kategori yaitu Date dan numeriknya ada 6 yaitu Open, High, Low, Close, Adj Close dan Volume
+sehingga data yang ditampilkan berdasarkan waktu / Date <br>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/7Qs3Rjg/Screenshot-2024-03-23-052342.png" alt="Screenshot-2024-03-23-052342" border="0"></a>
+<br>
+
 
 ### Data Preparation
 <br>
@@ -219,6 +237,7 @@ boosting, algoritma ini bertujuan untuk meningkatkan performa atau akurasi predi
 #### Model Boosting Algorithm
 boosting, algoritma ini bertujuan untuk meningkatkan performa atau akurasi prediksi. Caranya adalah dengan menggabungkan beberapa model sederhana dan dianggap lemah (weak learners) sehingga membentuk suatu model yang kuat (strong ensemble learner). Algoritma boosting muncul dari gagasan mengenai apakah algoritma yang sederhana seperti linear regression dan decision tree dapat dimodifikasi untuk dapat meningkatkan performa. Algoritma yang menggunakan teknik boosting bekerja dengan membangun model dari data latih. Kemudian ia membuat model kedua yang bertugas memperbaiki kesalahan dari model pertama. Model ditambahkan sampai data latih terprediksi dengan baik atau telah mencapai jumlah maksimum model untuk ditambahkan. 
 
+dengan membandingkan ketiga model itu untuk mengetahui model mana yang lebih akurat dalam menangani kasus ini dengan menggunakan metrik mse bisa mengentahui seberapa besar error dari model ketiga itu
 
 ### _Evaluation_
 Metrik digunakan untuk mengevaluasi seberapa baik model dalam memprediksi harga. Untuk kasus regresi, beberapa metrik yang biasanya digunakan adalah Mean Squared Error (MSE) atau Root Mean Square Error (RMSE). Secara umum, metrik ini mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. <br>
@@ -255,7 +274,7 @@ tabel 2
 <br>
 
 
-Dari gambar tabel 2, terlihat bahwa, model Random Forest (RF) memberikan nilai eror yang paling kecil. Sedangkan model dengan KNN memiliki eror yang paling besar. Sehingga model RF yang akan yang pilih sebagai model terbaik untuk melakukan prediksi harga diamonds.
+Dari gambar tabel 2, terlihat bahwa, model Random Forest (RF) memberikan nilai eror yang paling kecil. Sedangkan model dengan KNN memiliki eror yang paling besar. Sehingga dapat dilihat model RF sebagai model terbaik untuk melakukan prediksi harga golds.
 
 dalam tabel 3 nilai prediksi Random Forest mendekati nilai uji walaupun nilai prediksi model Boasting juga mendekati nilai uji
 
@@ -271,7 +290,11 @@ tabel 3 <br>
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/mHq9FTD/Screenshot-2024-03-21-224627.png" alt="Screenshot-2024-03-21-224627" border="0"></a>
 <br>
-Terlihat bahwa prediksi dengan Random Forest (RF) memberikan hasil yang paling mendekati nilai uji
+Terlihat bahwa prediksi dengan Random Forest (RF) memberikan hasil yang paling mendekati nilai uji.
+
+Kesimpulannya <br>
+1. fitur yang paling berpengaruh yaitu fitur close dan adj close karena memiliki korelasi yang sangat kuat terhadao fitur open , high , dan low.
+2. setelah membanding ke tiga model itu menggunakan MSE dan melakukan uji, dihasilkan bahwa model Random Forest memiliki nilai error yang rendah dan ketika diuji nilai prediksinya hampir mendekati dibanding dengan model lainnya .
 
 Referensi Jurnal : <br>
 [1] M. D. H. Mela Priantika, Sari Wulandari, “Harga Emas Terhadap Minat Nasabah Berinvestasi Menggunakan Produk Tabungan Emas,” J. Penelit. Pendidik. Sos. Hum., vol. 6, no. 1, pp. 8–12, 2021, doi: 10.32696/jp2sh.v6i1.714. <br>
