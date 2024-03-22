@@ -10,16 +10,16 @@ Referensi Jurnal : <br>
 link [https://jurnal-lp2m.umnaw.ac.id/index.php/JP2SH/article/view/714/518]
 link [https://journal.fkpt.org/index.php/BIT/article/view/986/509]
 
-## Business Understanding
-1. Problem Statements
+## _Business Understanding_
+1. _Problem Statements_
 - Dari serangkaian fitur yang ada, fitur apa yang paling berpengaruh terhadap harga emas?
 - Berapa harga pasar emas dengan karakteristik atau fitur tertentu?
-2. Goals
+2. _Goals_
 - Mengetahui fitur yang paling berkorelasi dengan harga emas yang akan digunakan untuk pelatihan model dan nantinya akan menghasilkan prediksi yang akurat terkait dengan harga emas untuk melakukan investasi.
-- Membuat model machine learning yang dapat memprediksi harga emas seakurat mungkin berdasarkan fitur-fitur yang ada dengan membangun model regresi dan menggunakan metrik Mean Squared Error (MSE) atau Root Mean Square Error (RMSE) untuk mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. ini akan bahas lebih detail mengenai metrik ini di modul Evaluasi. Pengembangan model akan menggunakan beberapa algoritma machine learning yaitu K-Nearest Neighbor, Random Forest, dan Boosting Algorithm. Dari ketiga model ini, akan dipilih satu model yang memiliki nilai kesalahan prediksi terkecil. Dengan kata lain, kita akan membuat model seakurat mungkin, yaitu model dengan nilai kesalahan sekecil mungkin.
+- Membuat model machine learning yang dapat memprediksi harga emas seakurat mungkin berdasarkan fitur-fitur yang ada dengan membangun model regresi dan menggunakan metrik Mean Squared Error (MSE) atau Root Mean Square Error (RMSE) untuk mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. ini akan bahas lebih detail mengenai metrik ini di modul Evaluasi. Pengembangan model akan menggunakan beberapa algoritma machine learning yaitu _K-Nearest Neighbor, Random Forest, dan Boosting Algorithm._ Dari ketiga model ini, akan dipilih satu model yang memiliki nilai kesalahan prediksi terkecil. Dengan kata lain, kita akan membuat model seakurat mungkin, yaitu model dengan nilai kesalahan sekecil mungkin.
 
 
-## Data Understanding
+## _Data Understanding_
 
 Data historis yang diambil dari Yahoo Finance untuk Gold ETF memiliki 7 kolom: Tanggal, Open, High, Low, Close, Adjusted Close, dan Volume. Berikut penjelasan mengenai variabel data tersebut:
 - Tanggal (Date): Ini adalah tanggal perdagangan untuk setiap data historis.
@@ -83,8 +83,8 @@ menampilkan hasil statistik dari dataframe seperti count, mean dll
 ``` 
 golds.describe()
 ```
-Cek Nilai Missing Value 
-missing value merupakan nilai yang tidak ada atau NaNN yang ada di dataset. missing value bisa mempengaruhi kualiatas prediksi model sehingga harus dihapus atau ganti dengan nilai mean, count, dll. disini mencek nilai missing value dari kolom open, high dan low.
+Cek Nilai _Missing Value_
+missing value merupakan nilai yang tidak ada atau NaNN yang ada di dataset. missing value bisa mempengaruhi kualiatas prediksi model sehingga harus dihapus atau ganti dengan nilai mean, count, dll. disini mencek nilai _missing value_ dari kolom open, high dan low.
 
 ```
 open = (golds.Open == 0).sum()
@@ -163,7 +163,8 @@ plt.ylabel('Columns')
 plt.xticks(rotation=45)
 plt.show()
 ```
-gambar 5
+gambar 5 
+<br>
 ![download (13)](https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/f2b98eac-8797-48df-ac6e-f967b548ed25) <br>
 
 ### Data Preparation
@@ -196,12 +197,14 @@ X_train[numerical_features] = scaler.transform(X_train.loc[:, numerical_features
 X_train[numerical_features].head() <br>
 
 ```
-gambar 6
+gambar 6 
+<br>
 <img width="197" alt="Screenshot 2024-03-21 224324" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/9a12223d-1810-48da-a64b-2ad2719aa286"> <br>
 ```
 X_train[numerical_features].describe().round(4)
 ```
 gambar 7
+<br>
 
 <img width="176" alt="Screenshot 2024-03-21 224401" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/f475b4cd-457f-49b3-ab8d-7fedf5696c9a">
 <br>
@@ -218,11 +221,12 @@ yang nantinya kita akan membandingkan mana model yang efektif dalam menyelesaika
 models = pd.DataFrame(index=['train_mse', 'test_mse'], columns=['KNN', 'RandomForest', 'Boosting'])
 ```
 #### Model KNN 
-algoritma KNN menggunakan ‘kesamaan fitur’ untuk memprediksi nilai dari setiap data yang baru. untuk menentukan titik mana dalam data yang paling mirip dengan input baru, KNN menggunakan perhitungan ukuran jarak. metrik ukuran jarak yang juga sering dipakai antara lain: Euclidean distance dan Manhattan distance. Sebagai contoh, jarak Euclidean dihitung sebagai akar kuadrat dari jumlah selisih kuadrat antara titik a dan titik b. Dirumuskan sebagai berikut:
+algoritma KNN menggunakan ‘kesamaan fitur’ untuk memprediksi nilai dari setiap data yang baru. untuk menentukan titik mana dalam data yang paling mirip dengan input baru, KNN menggunakan perhitungan ukuran jarak. metrik ukuran jarak yang juga sering dipakai antara lain: Euclidean distance dan Manhattan distance. Sebagai contoh, jarak Euclidean dihitung sebagai akar kuadrat dari jumlah selisih kuadrat antara titik a dan titik b. Dirumuskan sebagai berikut: <br>
 
 
 $$ d(x,y) = { \sqrt{ \left( \sum_{n=1}^n (xi-yi)^2 \right) }}$$ 
 <br>
+
 menggunakan nilai K =10
 
 ```
@@ -260,9 +264,8 @@ boosting.fit(X_train, y_train)
 models.loc['train_mse','Boosting'] = mean_squared_error(y_pred=boosting.predict(X_train), y_true=y_train)
 ```
 
-### Evaluation
-dengan Metrik MSE
-
+### _Evaluation_
+Metrik digunakan untuk mengevaluasi seberapa baik model Anda dalam memprediksi harga. Untuk kasus regresi, beberapa metrik yang biasanya digunakan adalah Mean Squared Error (MSE) atau Root Mean Square Error (RMSE). Secara umum, metrik ini mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. Kita akan bahas lebih detail mengenai metrik ini di modul Evaluasi.
 ```
 # Lakukan scaling terhadap fitur numerik pada X_test sehingga memiliki rata-rata=0 dan varians=1
 X_test.loc[:, numerical_features] = scaler.transform(X_test[numerical_features])
@@ -288,7 +291,7 @@ tabel 2
 
 nilai error yang paling kecil yaitu random forest
 
-disini nilai prediksi Random Forest mendekati nilai uji walaupun nilai prediksi model Boasting juga mendekati
+disini nilai prediksi Random Forest mendekati nilai uji walaupun nilai prediksi model Boasting juga mendekati nilai uji
 
 ```
 prediksi = X_test.iloc[:1].copy()
@@ -301,4 +304,4 @@ pd.DataFrame(pred_dict)
 tabel 3 <br>
 
 <img width="289" alt="Screenshot 2024-03-21 224627" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/04bafd8d-178b-4d99-877a-a66fcbcaac42"> <br>
-Terlihat bahwa prediksi dengan Random Forest (RF) memberikan hasil yang paling mendekati.
+Terlihat bahwa prediksi dengan Random Forest (RF) memberikan hasil yang paling mendekati nilai uji
