@@ -1,0 +1,245 @@
+# Laporan Proyek Machine Learning - Endang Supriyadi
+
+## Domain Proyek
+Emas /Gold merupakan barang yang berharga saat ini,selain sebagai perhiasan emas juga sebagai investasi. tujuan dari sebuah investasi adalah sebuah keuntungan maka banyak orang berinvestasi dengan emas, karena harga emas atau logam mulia cenderung stabil dan beresko rendah dibandingkan dengan investasi lain. Ketika terjadi inflasi harga emas tidak berubah dan cenderung aman. maka dari itu saya ingin menprediksi harga emas dengan machine learning yang nantinya akan menjadi tolak ukur jika ketika saya membeli atau berinvestasi emas.
+
+Referensi Jurnal : Analisis Komparasi Algoritma Data Mining Naive Bayes, K-Nearest Neighbors dan Regresi Linier Dalam Prediksi Harga Emas (penulis : Muhammad Muharrom, 2023) link [https://journal.fkpt.org/index.php/BIT/article/view/986/509]
+
+## Business Understanding
+1. Problem Statements
+- Dari serangkaian fitur yang ada, fitur apa yang paling berpengaruh terhadap harga emas?
+- Berapa harga pasar diamonds dengan karakteristik atau fitur tertentu?
+2. Goals
+- Mengetahui fitur yang paling berkorelasi dengan harga diamonds.
+- Membuat model machine learning yang dapat memprediksi harga diamonds seakurat mungkin berdasarkan fitur-fitur yang ada.
+
+3. Metodologi
+Tujuan yang ingin dicapai adalah prediksi harga emas.harga merupakan variabel kontinu artinya kita sedang menyelesaikan masalah regresi. jadi metodologi pada proyek ini adalah membagun model regresi dengan harga emas.
+4. Metrik
+Metrik digunakan adalah Mean Squared Error (MSE) atau Root Mean Square Error (RMSE). Secara umum, metrik ini mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. Kita akan bahas lebih detail mengenai metrik ini di modul Evaluasi. Pengembangan model akan menggunakan beberapa algoritma machine learning yaitu K-Nearest Neighbor, Random Forest, dan Boosting Algorithm. Dari ketiga model ini, akan dipilih satu model yang memiliki nilai kesalahan prediksi terkecil. Dengan kata lain, kita akan membuat model seakurat mungkin, yaitu model dengan nilai kesalahan sekecil mungkin.
+
+## Data Understanding
+
+Data historis yang diambil dari Yahoo Finance untuk Gold ETF memiliki 7 kolom: Tanggal, Open, High, Low, Close, Adjusted Close, dan Volume. Berikut penjelasan mengenai variabel data tersebut:
+- Tanggal (Date): Ini adalah tanggal perdagangan untuk setiap data historis.
+- Open: Harga pembukaan Gold ETF pada hari tersebut.
+- High: Harga tertinggi Gold ETF yang dicapai pada hari tersebut.
+- Low: Harga terendah Gold ETF yang dicapai pada hari tersebut.
+- Close: Harga penutupan Gold ETF pada hari tersebut.
+- Adjusted Close: Harga penutupan yang telah disesuaikan dengan faktor-faktor seperti dividen, pemecahan saham (stock split), dan penerbitan saham baru. Adjusted Close dianggap sebagai representasi harga yang lebih akurat untuk analisis jangka panjang.
+- Volume: Jumlah lembar saham Gold ETF yang diperdagangkan pada hari tersebut.
+
+dataset ada 1718 rows dan 81 columns
+
+sumber dataset [https://www.kaggle.com/datasets/sid321axn/gold-price-prediction-dataset/data]
+#### Library
+``` 
+! pip install kaggle
+import os
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+%matplotlib inline
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.metrics import mean_squared_error
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import AdaBoostRegressor
+```
+#### Download Dataset
+``` 
+os.environ['KAGGLE_CONFIG_DIR'] = "/content/gdrive/My Drive/Kaggle"
+%cd /content/gdrive/My Drive/Kaggle
+!kaggle datasets download -d sid321axn/gold-price-prediction-dataset
+# unzip dataset
+!unzip \*.zip && rm *.zip.
+```
+
+
+### Eksploratory Data
+membaca dataset
+```
+# load the dataset
+df = '/content/gdrive/MyDrive/Kaggle/FINAL_USO.csv'
+golds = pd.read_csv(df)
+golds
+```
+![alt text](<Screenshot 2024-03-21 185708-1.png>)
+Menampilkan info DataFrame dari dataset
+```
+golds.info()
+```
+![alt text](<Screenshot 2024-03-21 224103-1.png>)
+menampilkan hasil statistik dari dataframe seperti count, mean dll
+``` 
+golds.describe()
+```
+Cek Nilai Missing Value 
+jika ada maka kita harus atau gunakan nilai mean, median, atau nilai yang lain sesuai ketentuannya
+
+```
+open = (golds.Open == 0).sum()
+high = (golds.High == 0).sum()
+low = (golds.Low == 0).sum()
+
+print("Nilai 0 di kolom open ada: ", open)
+print("Nilai 0 di kolom high ada: ", high)
+print("Nilai 0 di kolom low ada: ", low)
+```
+data diatas tidak ada missing value
+
+#### Mengatasi outliers dengan IQR
+yaitu untuk mengidentifikasi outlier yang berada diluar Q1 dan Q3. nilai apapun yang berada diluar batas ini dianggap sebagai outlier
+```
+Q1 = golds.quantile(0.25)
+Q3 = golds.quantile(0.75)
+IQR=Q3-Q1
+golds=golds[~((golds<(Q1-1.5*IQR))|(golds>(Q3+1.5*IQR))).any(axis=1)]
+
+# Cek ukuran dataset setelah kita drop outliers
+golds.shape
+
+#output
+(835, 80)
+
+```
+menghitung korelasi antara kolom-kolom dalam dataframe goals dan menvisualisasikannya sehingga jika semakin tinggi nilai korelasi semakin kuat hubungan antara kolom target dan kolom yang bersangkutan. 
+
+```
+target_column = 'Close'
+
+# Calculate correlation matrix
+correlation_matrix = golds.corr()
+correlations = correlation_matrix[target_column]
+plt.figure(figsize=(15, 20))
+sns.barplot(x=correlations.values, y=correlations.index)
+plt.title(f'Correlation with {target_column}')
+plt.xlabel('correlations')
+plt.ylabel('Columns')
+plt.xticks(rotation=45)
+plt.show()
+```
+![alt text](<download (13)-1.png>)
+
+### Data Preparation
+disini kita melakukan transformasi pada data sehingga menjadi bentuk yang cocok untuk proses pemodelan
+##### Train Test Split
+membagi data latih dan data uji 80:20, proporsi tersebut sangat umum digunakan.
+tujuannya agar data uji yang berperan sebagai data baru tidak terkotori dengan informasi yang kita dapatkan dari data latih.
+```
+X = golds.drop(["Close"],axis =1)
+y = golds["Close"]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 123)
+print(f'Total # of sample in whole dataset: {len(X)}')
+print(f'Total # of sample in train dataset: {len(X_train)}')
+print(f'Total # of sample in test dataset: {len(X_test)}')
+
+#Output
+Total # of sample in whole dataset: 835
+Total # of sample in train dataset: 668
+Total # of sample in test dataset: 167
+```
+
+#### Standarisasi
+adalah teknik transformasi yang paling umum digunakan dalam tahap persiapan pemodelan. untuk fitur numerik kita tidak akan melakukan transformasi dengan one-hot-encoding seperti pada fitur kategori. kita akan menggunakan teknik StandarScaler dari library Scikitlearn
+StandardScaler melakukan proses standarisasi fitur dengan mengurangkan mean (nilai rata-rata) kemudian membaginya dengan standar deviasi untuk menggeser distribusi.  StandardScaler menghasilkan distribusi dengan standar deviasi sama dengan 1 dan mean sama dengan 0. Sekitar 68% dari nilai akan berada di antara -1 dan 1.
+```
+numerical_features = ['Open','High', 'Low']
+scaler = StandardScaler()
+scaler.fit(X_train[numerical_features])
+X_train[numerical_features] = scaler.transform(X_train.loc[:, numerical_features])
+X_train[numerical_features].head()
+```
+![alt text](<Screenshot 2024-03-21 224324-1.png>)
+```
+X_train[numerical_features].describe().round(4)
+```
+![alt text](<Screenshot 2024-03-21 224401-1.png>)
+
+### Modeling
+
+mecoba membuat 3 buah model machine learning dengan algoritma : 
+1. K-Nearest Neighbor (KNN)
+2. Random Forest
+3. Boosting Algorithm 
+yang nantinya kita akan membandingkan mana model yang efektif dalam menyelesaikan kasus ini
+```
+# Siapkan dataframe untuk analisis model
+models = pd.DataFrame(index=['train_mse', 'test_mse'], columns=['KNN', 'RandomForest', 'Boosting'])
+```
+#### Model KNN 
+algoritma KNN menggunakan ‘kesamaan fitur’ untuk memprediksi nilai dari setiap data yang baru. 
+
+menggunakan nilai K =10
+```
+
+knn = KNeighborsRegressor(n_neighbors=10)
+knn.fit(X_train, y_train)
+
+models.loc['train_mse','knn'] = mean_squared_error(y_pred = knn.predict(X_train), y_true=y_train)
+```
+#### Model Random Forest
+termasuk model kategori ensemble(group) learning yaitu model prediksi yang terdiri dari beberapa model dan bekerjasama, sehingga tidak keberhasilan akan lebih tinggi dibandingkan model yang bekerja sendiri.
+
+menggunakan nilai n_etimator (jumlah trees)=45
+max_depth (panjang atau kedalam pohon) = 16
+random_state =60
+n_jobs =-1
+
+```
+# buat model prediksi
+RF = RandomForestRegressor(n_estimators=45, max_depth=16, random_state=60, n_jobs=-1)
+RF.fit(X_train, y_train)
+
+models.loc['train_mse','RandomForest'] = mean_squared_error(y_pred=RF.predict(X_train), y_true=y_train)
+```
+
+#### Model Boosting Algorithm
+boosting, algoritma ini bertujuan untuk meningkatkan performa atau akurasi prediksi. Caranya adalah dengan menggabungkan beberapa model sederhana dan dianggap lemah (weak learners) sehingga membentuk suatu model yang kuat (strong ensemble learner). Algoritma boosting muncul dari gagasan mengenai apakah algoritma yang sederhana seperti linear regression dan decision tree dapat dimodifikasi untuk dapat meningkatkan performa. 
+
+nilai learning_rate = 0.05
+random_state = 60
+
+```
+boosting = AdaBoostRegressor(learning_rate=0.05, random_state=60)
+boosting.fit(X_train, y_train)
+models.loc['train_mse','Boosting'] = mean_squared_error(y_pred=boosting.predict(X_train), y_true=y_train)
+```
+
+### Evaluation
+dengan Metrik MSE
+
+```
+# Lakukan scaling terhadap fitur numerik pada X_test sehingga memiliki rata-rata=0 dan varians=1
+X_test.loc[:, numerical_features] = scaler.transform(X_test[numerical_features])
+# Buat variabel mse yang isinya adalah dataframe nilai mse data train dan test pada masing-masing algoritma
+mse = pd.DataFrame(columns=['train', 'test'], index=['KNN','RF','Boosting'])
+
+# Buat dictionary untuk setiap algoritma yang digunakan
+model_dict = {'KNN': knn, 'RF': RF, 'Boosting': boosting}
+
+# Hitung Mean Squared Error masing-masing algoritma pada data train dan test
+for name, model in model_dict.items():
+    mse.loc[name, 'train'] = mean_squared_error(y_true=y_train, y_pred=model.predict(X_train))/1e3
+    mse.loc[name, 'test'] = mean_squared_error(y_true=y_test, y_pred=model.predict(X_test))/1e3
+
+# Panggil mse
+mse
+```
+![alt text](<Screenshot 2024-03-21 224441-1.png>)
+nilai error yang paling kecil yaitu random forest
+
+disini nilai prediksi Random Forest mendekati nilai uji walaupun nilai prediksi model Boasting juga mendekati
+
+```
+prediksi = X_test.iloc[:1].copy()
+pred_dict = {'y_true':y_test[:1]}
+for name, model in model_dict.items():
+    pred_dict['prediksi_'+name] = model.predict(prediksi).round(1)
+
+pd.DataFrame(pred_dict)
+```
+![alt text](<Screenshot 2024-03-21 224627-1.png>)
+Terlihat bahwa prediksi dengan Random Forest (RF) memberikan hasil yang paling mendekati.
