@@ -40,8 +40,8 @@ df = '/content/gdrive/MyDrive/Kaggle/FINAL_USO.csv'
 golds = pd.read_csv(df)
 golds
 ```
-tabel 1 
-https://ibb.co/jT5CkJp
+tabel 1 <br>
+<a href="https://ibb.co/jT5CkJp"><img src="https://i.ibb.co/1LnCGzS/Screenshot-2024-03-21-185708.png" alt="Screenshot-2024-03-21-185708" border="0"></a>
  <br>
 Menampilkan info DataFrame dari dataset
 di gambar 1 menampilkan typedata yang nantinya sebagai acuan  kedepannya 
@@ -49,8 +49,8 @@ di gambar 1 menampilkan typedata yang nantinya sebagai acuan  kedepannya
 golds.info()
 ```
 <br>
-gambar 1
-https://ibb.co/3hsyKZm
+gambar 1 <br>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/x5sSZTq/Screenshot-2024-03-21-224103.png" alt="Screenshot-2024-03-21-224103" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'>new logo png hd</a><br />
 <br>
 menampilkan hasil statistik dari dataframe seperti count, mean dll
 ``` 
@@ -78,8 +78,8 @@ visualisasi boxplot pada kolom open di gambar 2 akan terlihat apakah ada nilai o
 sns.boxplot(x=golds['Open'])
 ```
 <br>
-gambar 2
-https://ibb.co/377TDsd
+gambar 2 <br>
+<a href="https://ibb.co/377TDsd"><img src="https://i.ibb.co/wRRd9Lg/Screenshot-2024-03-23-000757.png" alt="Screenshot-2024-03-23-000757" border="0"></a>
 <br>
 visualisasi boxplot pada kolom high di gambar 3akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak 
 <br>
@@ -88,8 +88,8 @@ visualisasi boxplot pada kolom high di gambar 3akan terlihat apakah ada nilai ou
 sns.boxplot(x=golds['High'])
 ``` 
 <br>
-gambar 3
-https://ibb.co/2NSZ4Lh
+gambar 3 <br>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/pyQhFsw/Screenshot-2024-03-23-001031.png" alt="Screenshot-2024-03-23-001031" border="0"></a>
 <br>
 visualisasi boxplot pada kolom low di gambar 4 akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak  <br>
 
@@ -97,8 +97,8 @@ visualisasi boxplot pada kolom low di gambar 4 akan terlihat apakah ada nilai ou
 sns.boxplot(x=golds['Low'])
 ```
 <br>
-gambar 4
-https://ibb.co/hB70Pv5
+gambar 4 <br>
+<a href="https://ibb.co/hB70Pv5"><img src="https://i.ibb.co/gSjY5C1/Screenshot-2024-03-23-001128.png" alt="Screenshot-2024-03-23-001128" border="0"></a>
 <br>
 
 Untuk mengatasi outliers gunakan metode IQR. metode IQR digunakan untuk mengidentifikasi outlier yang berada di luar Q1 dan Q3. Nilai apa pun yang berada di luar batas ini dianggap sebagai outlier. 
@@ -140,7 +140,7 @@ plt.show()
 ```
 gambar 5 
 <br>
-https://ibb.co/QbLKxgv
+<a href="https://ibb.co/QbLKxgv"><img src="https://i.ibb.co/mDkcPj5/download-13.png" alt="download-13" border="0"></a>
  <br>
 
 ### Data Preparation
@@ -175,7 +175,7 @@ X_train[numerical_features].head() <br>
 ```
 gambar 6 
 <br>
-https://ibb.co/Zx82nPJ
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/895YWpB/Screenshot-2024-03-21-224324.png" alt="Screenshot-2024-03-21-224324" border="0"></a>
 <br>
 ```
 X_train[numerical_features].describe().round(4)
@@ -183,7 +183,7 @@ X_train[numerical_features].describe().round(4)
 gambar 7
 <br>
 
-https://ibb.co/B2WHV0y
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/Jj6WRDv/Screenshot-2024-03-21-224401.png" alt="Screenshot-2024-03-21-224401" border="0"></a>
 <br>
 
 ### Modeling
@@ -240,7 +240,7 @@ Mean Squared Error (MSE) metrik ini mengukur seberapa jauh hasil prediksi dengan
 ```
 tabel 2
 <br>
-https://ibb.co/ZBczb50
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/Lx9dsm3/Screenshot-2024-03-21-224441.png" alt="Screenshot-2024-03-21-224441" border="0"></a>
 <br>
 
 
@@ -258,7 +258,7 @@ pd.DataFrame(pred_dict)
 ```
 tabel 3 <br>
 
-https://ibb.co/D7C9gWV
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/mHq9FTD/Screenshot-2024-03-21-224627.png" alt="Screenshot-2024-03-21-224627" border="0"></a>
 <br>
 Terlihat bahwa prediksi dengan Random Forest (RF) memberikan hasil yang paling mendekati nilai uji
 
