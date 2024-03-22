@@ -3,6 +3,8 @@
 ## Domain Proyek
 Kondisi ekonomi dan keuangan merupakan salah satu topik yang selalu berkembang dan menjadi perhatian masyarakat, baik masyarakat indonesia maupun masyarakat dunia. Perkembangan ekonomi tersebut akan senantiasa berubah seiring naiknya kebutuhan pokok, perubahan tersebut disebabkan oleh inflasi yang menurunkan daya beli masyarakat terhadap barang atau jasa akibat nilai tukar mata uang yang menurun. Emas /Gold merupakan barang yang berharga saat ini,selain sebagai perhiasan emas juga sebagai investasi. Peran investasi sangat penting untuk dapat mencegah penurunan lebih rendah lagi atau bahkan dapat meningkatkan pertumbuhan ekonomi [1]. Tujuan dari sebuah investasi adalah sebuah keuntungan maka banyak orang berinvestasi dengan emas, karena harga emas atau logam mulia cenderung stabil dan beresko rendah dibandingkan dengan investasi lain. Ketika terjadi inflasi harga emas tidak berubah dan cenderung aman [2]. Dengan teknologi machine learning memprediksi harga emas bisa dengan cepat karena cukup dengan dilatih dengan dataset yang sudah bersih sehingga bisa meningkatkan akurasi dalam memprediksi harga emas.
 
+Kontribusi dari penerapan machine learning dalam memprediksi harga emas adalah memberikan perkiraan yang lebih akurat dan cepat dibandingkan dengan metode tradisional. Dengan menggunakan teknik machine learning, dapat memanfaatkan pola kompleks dalam data historis untuk membuat prediksi yang lebih baik tentang pergerakan harga emas di masa depan, yang dapat membantu investor dan pelaku pasar membuat keputusan investasi yang lebih baik.
+
 
 
 ## _Business Understanding_
@@ -53,9 +55,16 @@ gambar 1 <br>
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/x5sSZTq/Screenshot-2024-03-21-224103.png" alt="Screenshot-2024-03-21-224103" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'>new logo png hd</a><br />
 <br>
 menampilkan hasil statistik dari dataframe seperti count, mean dll
+
 ``` 
 golds.describe()
 ```
+<br>
+
+### Data Preparation
+<br>
+melakukan transformasi pada data sehingga menjadi bentuk yang cocok untuk proses pemodelan
+
 Cek Nilai _Missing Value_
 missing value merupakan nilai yang tidak ada atau NaNN yang ada di dataset. missing value bisa mempengaruhi kualiatas prediksi model sehingga harus dihapus atau ganti dengan nilai mean, count, dll. lalu mencek nilai _missing value_ dari kolom open, high dan low.
 
@@ -143,8 +152,7 @@ gambar 5
 <a href="https://ibb.co/QbLKxgv"><img src="https://i.ibb.co/mDkcPj5/download-13.png" alt="download-13" border="0"></a>
  <br>
 
-### Data Preparation
-melakukan transformasi pada data sehingga menjadi bentuk yang cocok untuk proses pemodelan
+
 ##### Train Test Split
 membagi data latih dan data uji 80:20, proporsi tersebut sangat umum digunakan.
 tujuannya agar data uji yang berperan sebagai data baru tidak terkotori dengan informasi yang didapatkan dari data latih.
