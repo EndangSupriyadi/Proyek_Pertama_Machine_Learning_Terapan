@@ -50,7 +50,8 @@ golds.info()
 ```
 <br>
 gambar 1
-<img width="242" alt="Screenshot 2024-03-21 224103" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/8b131c60-244c-4f65-9628-2dbfe8c6daff"> <br>
+https://ibb.co/3hsyKZm
+<br>
 menampilkan hasil statistik dari dataframe seperti count, mean dll
 ``` 
 golds.describe()
@@ -78,7 +79,7 @@ sns.boxplot(x=golds['Open'])
 ```
 <br>
 gambar 2
-<img width="319" alt="image" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/f6e3c144-c231-4846-9c38-3e501c4ecbb3">
+https://ibb.co/377TDsd
 <br>
 visualisasi boxplot pada kolom high disini akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak gambar 3<br>
 ```
@@ -86,7 +87,7 @@ sns.boxplot(x=golds['High'])
 ``` 
 <br>
 gambar 3
-<img width="332" alt="image" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/f2c524ac-fa78-4e76-adc2-8f6bcf6d63f6">
+https://ibb.co/2NSZ4Lh
 <br>
 visualisasi boxplot pada kolom low disini akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak gambar 4 <br>
 
@@ -95,7 +96,7 @@ sns.boxplot(x=golds['Low'])
 ```
 <br>
 gambar 4
-<img width="314" alt="image" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/4a4442ec-6552-4cc3-838a-5b95617dcc93">
+https://ibb.co/hB70Pv5
 <br>
 
 Untuk mengatasi outliers gunakan metode IQR. metode IQR digunakan untuk mengidentifikasi outlier yang berada di luar Q1 dan Q3. Nilai apa pun yang berada di luar batas ini dianggap sebagai outlier. 
@@ -137,7 +138,8 @@ plt.show()
 ```
 gambar 5 
 <br>
-![download (13)](https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/f2b98eac-8797-48df-ac6e-f967b548ed25) <br>
+https://ibb.co/QbLKxgv
+ <br>
 
 ### Data Preparation
 melakukan transformasi pada data sehingga menjadi bentuk yang cocok untuk proses pemodelan
@@ -171,7 +173,8 @@ X_train[numerical_features].head() <br>
 ```
 gambar 6 
 <br>
-<img width="197" alt="Screenshot 2024-03-21 224324" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/9a12223d-1810-48da-a64b-2ad2719aa286"> <br>
+https://ibb.co/Zx82nPJ
+<br>
 ```
 X_train[numerical_features].describe().round(4)
 ```
