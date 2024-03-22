@@ -52,7 +52,7 @@ golds.info()
 ```
 <br>
 gambar 1 <br>
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/x5sSZTq/Screenshot-2024-03-21-224103.png" alt="Screenshot-2024-03-21-224103" border="0"></a><br />
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/QKyLm6F/Screenshot-2024-03-23-050736.png" alt="Screenshot-2024-03-23-050736" border="0"></a><br />
 <br>
 menampilkan hasil statistik dari dataframe seperti count, mean dll
 
