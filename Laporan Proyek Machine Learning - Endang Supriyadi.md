@@ -7,7 +7,7 @@ Referensi Jurnal : <br>
 [1] M. D. H. Mela Priantika, Sari Wulandari, “Harga Emas Terhadap Minat Nasabah Berinvestasi Menggunakan Produk Tabungan Emas,” J. Penelit. Pendidik. Sos. Hum., vol. 6, no. 1, pp. 8–12, 2021, doi: 10.32696/jp2sh.v6i1.714. <br>
 [2]	M. Muharrom, “Analisis Komparasi Algoritma Data Mining Naive Bayes, K-Nearest Neighbors dan Regresi Linier Dalam Prediksi Harga Emas,” Bull. Inf. Technol., vol. 4, no. 4, pp. 430–438, 2023, doi: 10.47065/bit.v4i4.986.
 
-
+link [https://jurnal-lp2m.umnaw.ac.id/index.php/JP2SH/article/view/714/518]
 link [https://journal.fkpt.org/index.php/BIT/article/view/986/509]
 
 ## Business Understanding
@@ -62,6 +62,7 @@ os.environ['KAGGLE_CONFIG_DIR'] = "/content/gdrive/My Drive/Kaggle"
 
 ### Eksploratory Data
 membaca dataset
+dengan arakan path yang ada datasetnya dan tuliskan nama datasetnya sesuai script dibawah, setalah itu membaca dan menampilkan datanya. data ini masih bersifat mentah belum dibersihkan dan di filter fitur apa saja yang akan digunakan.
 ```
 # load the dataset
 df = '/content/gdrive/MyDrive/Kaggle/FINAL_USO.csv'
@@ -70,7 +71,7 @@ golds
 ```
 <img width="886" alt="Screenshot 2024-03-21 185708" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/461c74cd-b871-4c86-abc2-647a961e7d5c"> <br>
 Menampilkan info DataFrame dari dataset
-disini kita bisa melihat typedata yang nantinya sebagai acuan kita kedepannya
+disini kita bisa melihat typedata yang nantinya sebagai acuan kita kedepannya 
 ```
 golds.info()
 ```
@@ -81,7 +82,7 @@ menampilkan hasil statistik dari dataframe seperti count, mean dll
 golds.describe()
 ```
 Cek Nilai Missing Value 
-jika ada maka kita harus atau gunakan nilai mean, median, atau nilai yang lain sesuai ketentuannya
+missing value merupakan nilai yang tidak ada atau NaNN yang ada di dataset. missing value bisa mempengaruhi kualiatas prediksi model sehingga harus dihapus atau ganti dengan nilai mean, count, dll. disini mencek nilai missing value dari kolom open, high dan low.
 
 ```
 open = (golds.Open == 0).sum()
@@ -92,7 +93,7 @@ print("Nilai 0 di kolom open ada: ", open)
 print("Nilai 0 di kolom high ada: ", high)
 print("Nilai 0 di kolom low ada: ", low)
 ```
-data diatas tidak ada missing value
+data open, high, low nilai massing valuenya bernilai 0 jadi dalam fitur itu tidak ada nilai missing value 
 
 #### Mengatasi outliers dengan IQR
 yaitu untuk mengidentifikasi outlier yang berada diluar Q1 dan Q3. nilai apapun yang berada diluar batas ini dianggap sebagai outlier
