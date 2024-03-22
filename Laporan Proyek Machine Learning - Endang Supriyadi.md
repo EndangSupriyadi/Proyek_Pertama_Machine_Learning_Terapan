@@ -1,10 +1,11 @@
 # Laporan Proyek Machine Learning - Endang Supriyadi
 
 ## Domain Proyek
-Emas /Gold merupakan barang yang berharga saat ini,selain sebagai perhiasan emas juga sebagai investasi. tujuan dari sebuah investasi adalah sebuah keuntungan maka banyak orang berinvestasi dengan emas, karena harga emas atau logam mulia cenderung stabil dan beresko rendah dibandingkan dengan investasi lain. Ketika terjadi inflasi harga emas tidak berubah dan cenderung aman [1]. maka dari itu tujuan dari proyek ini yaitu menprediksi harga emas dengan machine learning dengan beberapa tahapan diantaranya data collection: mengumpulkan data histori harga emas, data processing : mencek apakah data set yang diambil sudah bersih atau masih kotor, melakukan normalisasi fitur, dan pemilihan fitur. Model training : disini menggunakan 3 model machine learning KNN, Random Forest dan Boosting karena agar tau mana model yang efesien untuk proyek ini. Evaluasi Model : Mencek hasil prediksi dari ketiga model itu dan mana prediksi yang lebih akurat
+Kondisi ekonomi dan keuangan merupakan salah satu topik yang selalu berkembang dan menjadi perhatian masyarakat, baik masyarakat indonesia maupun masyarakat dunia. Perkembangan ekonomi tersebut akan senantiasa berubah seiring naiknya kebutuhan pokok, perubahan tersebut disebabkan oleh inflasi yang menurunkan daya beli masyarakat terhadap barang atau jasa akibat nilai tukar mata uang yang menurun. Emas /Gold merupakan barang yang berharga saat ini,selain sebagai perhiasan emas juga sebagai investasi. Peran investasi sangat penting untuk dapat mencegah penurunan lebih rendah lagi atau bahkan dapat meningkatkan pertumbuhan ekonomi [1]. Tujuan dari sebuah investasi adalah sebuah keuntungan maka banyak orang berinvestasi dengan emas, karena harga emas atau logam mulia cenderung stabil dan beresko rendah dibandingkan dengan investasi lain. Ketika terjadi inflasi harga emas tidak berubah dan cenderung aman [1]. maka dari itu tujuan dari proyek ini yaitu menprediksi harga emas dengan machine learning dengan beberapa tahapan diantaranya data collection: mengumpulkan data histori harga emas, data processing : mencek apakah data set yang diambil sudah bersih atau masih kotor, melakukan normalisasi fitur, dan pemilihan fitur. Model training : disini menggunakan 3 model machine learning KNN, Random Forest dan Boosting karena agar tau mana model yang efesien untuk proyek ini. Evaluasi Model : Mencek hasil prediksi dari ketiga model itu dan mana prediksi yang lebih akurat
 
 Referensi Jurnal : <br>
-[1]	M. Muharrom, “Analisis Komparasi Algoritma Data Mining Naive Bayes, K-Nearest Neighbors dan Regresi Linier Dalam Prediksi Harga Emas,” Bull. Inf. Technol., vol. 4, no. 4, pp. 430–438, 2023, doi: 10.47065/bit.v4i4.986.
+[1] M. D. H. Mela Priantika, Sari Wulandari, “Harga Emas Terhadap Minat Nasabah Berinvestasi Menggunakan Produk Tabungan Emas,” J. Penelit. Pendidik. Sos. Hum., vol. 6, no. 1, pp. 8–12, 2021, doi: 10.32696/jp2sh.v6i1.714. <br>
+[2]	M. Muharrom, “Analisis Komparasi Algoritma Data Mining Naive Bayes, K-Nearest Neighbors dan Regresi Linier Dalam Prediksi Harga Emas,” Bull. Inf. Technol., vol. 4, no. 4, pp. 430–438, 2023, doi: 10.47065/bit.v4i4.986.
 
 
 link [https://journal.fkpt.org/index.php/BIT/article/view/986/509]
@@ -12,10 +13,10 @@ link [https://journal.fkpt.org/index.php/BIT/article/view/986/509]
 ## Business Understanding
 1. Problem Statements
 - Dari serangkaian fitur yang ada, fitur apa yang paling berpengaruh terhadap harga emas?
-- Berapa harga pasar diamonds dengan karakteristik atau fitur tertentu?
+- Berapa harga pasar emas dengan karakteristik atau fitur tertentu?
 2. Goals
-- Mengetahui fitur yang paling berkorelasi dengan harga diamonds.
-- Membuat model machine learning yang dapat memprediksi harga diamonds seakurat mungkin berdasarkan fitur-fitur yang ada.
+- Mengetahui fitur yang paling berkorelasi dengan harga emas yang nantinya akan digunakan untuk pelatihan model.
+- Membuat model machine learning yang dapat memprediksi harga emas seakurat mungkin berdasarkan fitur-fitur yang ada dengan membangun model regresi dan menggunakan metrikMean Squared Error (MSE) atau Root Mean Square Error (RMSE) untu mengukur
 
 3. Metodologi
 Tujuan yang ingin dicapai adalah prediksi harga emas.harga merupakan variabel kontinu artinya kita sedang menyelesaikan masalah regresi. jadi metodologi pada proyek ini adalah membagun model regresi dengan harga emas.
