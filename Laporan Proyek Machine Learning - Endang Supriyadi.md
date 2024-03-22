@@ -44,7 +44,7 @@ tabel 1
 https://ibb.co/jT5CkJp
  <br>
 Menampilkan info DataFrame dari dataset
-disini menampilkan typedata yang nantinya sebagai acuan  kedepannya gambar 1
+di gambar 1 menampilkan typedata yang nantinya sebagai acuan  kedepannya 
 ```
 golds.info()
 ```
@@ -57,7 +57,7 @@ menampilkan hasil statistik dari dataframe seperti count, mean dll
 golds.describe()
 ```
 Cek Nilai _Missing Value_
-missing value merupakan nilai yang tidak ada atau NaNN yang ada di dataset. missing value bisa mempengaruhi kualiatas prediksi model sehingga harus dihapus atau ganti dengan nilai mean, count, dll. disini mencek nilai _missing value_ dari kolom open, high dan low.
+missing value merupakan nilai yang tidak ada atau NaNN yang ada di dataset. missing value bisa mempengaruhi kualiatas prediksi model sehingga harus dihapus atau ganti dengan nilai mean, count, dll. lalu mencek nilai _missing value_ dari kolom open, high dan low.
 
 ```
 open = (golds.Open == 0).sum()
@@ -72,7 +72,7 @@ data open, high, low nilai massing valuenya bernilai 0 jadi dalam fitur itu tida
 
 #### Mengatasi outliers dengan IQR
 yaitu untuk mengidentifikasi outlier yang berada diluar Q1 dan Q3. nilai apapun yang berada diluar batas ini dianggap sebagai outlier
-visualisasi boxplot pada kolom open disini akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak gambar 2
+visualisasi boxplot pada kolom open di gambar 2 akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak
 <br>
 ```
 sns.boxplot(x=golds['Open'])
@@ -81,7 +81,9 @@ sns.boxplot(x=golds['Open'])
 gambar 2
 https://ibb.co/377TDsd
 <br>
-visualisasi boxplot pada kolom high disini akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak gambar 3<br>
+visualisasi boxplot pada kolom high di gambar 3akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak 
+<br>
+
 ```
 sns.boxplot(x=golds['High'])
 ``` 
@@ -89,7 +91,7 @@ sns.boxplot(x=golds['High'])
 gambar 3
 https://ibb.co/2NSZ4Lh
 <br>
-visualisasi boxplot pada kolom low disini akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak gambar 4 <br>
+visualisasi boxplot pada kolom low di gambar 4 akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak  <br>
 
 ```
 sns.boxplot(x=golds['Low'])
@@ -120,7 +122,7 @@ golds.shape
 (835, 80)
 
 ```
-menghitung korelasi antara kolom-kolom dalam dataframe goals dan menvisualisasikannya sehingga jika semakin tinggi nilai korelasi semakin kuat hubungan antara kolom target dan kolom yang bersangkutan. disini korelasi yang kuat itu kolom high, low, open, close dan adj close. adj close dan close nilainya sama maka boleh pilih salah satu saja. di bawah ini menngunakan target columnnya itu close
+menghitung korelasi antara kolom-kolom dalam dataframe goals dan menvisualisasikannya sehingga jika semakin tinggi nilai korelasi semakin kuat hubungan antara kolom target dan kolom yang bersangkutan. di gambar 5 korelasi yang kuat itu kolom high, low, open, close dan adj close. adj close dan close nilainya sama maka boleh pilih salah satu saja. di bawah ini menngunakan target columnnya itu close
 
 ```
 target_column = 'Close'
@@ -186,11 +188,7 @@ https://ibb.co/B2WHV0y
 
 ### Modeling
 
-mecoba membuat 3 buah model machine learning dengan algoritma : 
-1. K-Nearest Neighbor (KNN)
-2. Random Forest
-3. Boosting Algorithm 
-setelah itu bandingkan mana model yang efektif dalam menyelesaikan kasus ini
+Pengembangan model akan menggunakan beberapa algoritma machine learning yaitu _K-Nearest Neighbor, Random Forest, dan Boosting Algorithm._ Dari ketiga model ini, akan dipilih satu model yang memiliki nilai kesalahan prediksi terkecil. Dengan kata lain, dengan membuat model seakurat mungkin, yaitu model dengan nilai kesalahan sekecil mungkin.
 ```
 # Siapkan dataframe untuk analisis model
 models = pd.DataFrame(index=['train_mse', 'test_mse'], columns=['KNN', 'RandomForest', 'Boosting'])
@@ -202,45 +200,27 @@ algoritma KNN menggunakan ‘kesamaan fitur’ untuk memprediksi nilai dari seti
 $$ d(x,y) = { \sqrt{ \left( \sum_{n=1}^n (xi-yi)^2 \right) }}$$ 
 <br>
 
-menggunakan nilai K =10
 
-```
-
-knn = KNeighborsRegressor(n_neighbors=10)
-knn.fit(X_train, y_train)
-
-models.loc['train_mse','knn'] = mean_squared_error(y_pred = knn.predict(X_train), y_true=y_train)
-```
 #### Model Random Forest
-termasuk model kategori ensemble(group) learning yaitu model prediksi yang terdiri dari beberapa model dan bekerjasama, sehingga tidak keberhasilan akan lebih tinggi dibandingkan model yang bekerja sendiri.
+boosting, algoritma ini bertujuan untuk meningkatkan performa atau akurasi prediksi. Caranya adalah dengan menggabungkan beberapa model sederhana dan dianggap lemah (weak learners) sehingga membentuk suatu model yang kuat (strong ensemble learner). Ada dua teknik pendekatan dalam membuat model ensemble, yaitu bagging dan boosting. Jangan bingung dulu dengan istilah ini ya. Kita akan bahas satu per satu. Bagging atau bootstrap aggregating adalah teknik yang melatih model dengan sampel random. Dalam teknik bagging, sejumlah model dilatih dengan teknik sampling with replacement (proses sampling dengan penggantian)
 
-menggunakan nilai n_etimator (jumlah trees)=45
-max_depth (panjang atau kedalam pohon) = 16
-random_state =60
-n_jobs =-1
-
-```
-# buat model prediksi
-RF = RandomForestRegressor(n_estimators=45, max_depth=16, random_state=60, n_jobs=-1)
-RF.fit(X_train, y_train)
-
-models.loc['train_mse','RandomForest'] = mean_squared_error(y_pred=RF.predict(X_train), y_true=y_train)
-```
 
 #### Model Boosting Algorithm
-boosting, algoritma ini bertujuan untuk meningkatkan performa atau akurasi prediksi. Caranya adalah dengan menggabungkan beberapa model sederhana dan dianggap lemah (weak learners) sehingga membentuk suatu model yang kuat (strong ensemble learner). Algoritma boosting muncul dari gagasan mengenai apakah algoritma yang sederhana seperti linear regression dan decision tree dapat dimodifikasi untuk dapat meningkatkan performa. 
+boosting, algoritma ini bertujuan untuk meningkatkan performa atau akurasi prediksi. Caranya adalah dengan menggabungkan beberapa model sederhana dan dianggap lemah (weak learners) sehingga membentuk suatu model yang kuat (strong ensemble learner). Algoritma boosting muncul dari gagasan mengenai apakah algoritma yang sederhana seperti linear regression dan decision tree dapat dimodifikasi untuk dapat meningkatkan performa. Algoritma yang menggunakan teknik boosting bekerja dengan membangun model dari data latih. Kemudian ia membuat model kedua yang bertugas memperbaiki kesalahan dari model pertama. Model ditambahkan sampai data latih terprediksi dengan baik atau telah mencapai jumlah maksimum model untuk ditambahkan. 
 
-nilai learning_rate = 0.05
-random_state = 60
-
-```
-boosting = AdaBoostRegressor(learning_rate=0.05, random_state=60)
-boosting.fit(X_train, y_train)
-models.loc['train_mse','Boosting'] = mean_squared_error(y_pred=boosting.predict(X_train), y_true=y_train)
-```
 
 ### _Evaluation_
-Metrik digunakan untuk mengevaluasi seberapa baik model dalam memprediksi harga. Untuk kasus regresi, beberapa metrik yang biasanya digunakan adalah Mean Squared Error (MSE) atau Root Mean Square Error (RMSE). Secara umum, metrik ini mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. hal ini akan bahas lebih detail mengenai metrik ini di modul Evaluasi.
+Metrik digunakan untuk mengevaluasi seberapa baik model dalam memprediksi harga. Untuk kasus regresi, beberapa metrik yang biasanya digunakan adalah Mean Squared Error (MSE) atau Root Mean Square Error (RMSE). Secara umum, metrik ini mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. <br>
+Rumus MSE:
+<br>
+
+$$ MSE = { 1/N {  \sum_{i=1}^n (yi-ypred_i)^2  }}$$ 
+
+<br>
+sebelum menghitung nilai MSE, perlu melakukan proses scaling fitur numerik pada data uji. Sebelumnya, melakukan proses scaling pada data latih untuk menghindari kebocoran data. Sekarang, setelah model selesai dilatih dengan 3 algoritma, yaitu KNN, Random Forest, dan Adaboost, perlu melakukan proses scaling terhadap data uji. Hal ini harus dilakukan agar skala antara data latih dan data uji sama dan bisa melakukan evaluasi.
+
+
+
 ```
 # Lakukan scaling terhadap fitur numerik pada X_test sehingga memiliki rata-rata=0 dan varians=1
 X_test.loc[:, numerical_features] = scaler.transform(X_test[numerical_features])
@@ -264,9 +244,9 @@ https://ibb.co/ZBczb50
 <br>
 
 
-nilai error yang paling kecil yaitu random forest
+Dari gambar tabel 2, terlihat bahwa, model Random Forest (RF) memberikan nilai eror yang paling kecil. Sedangkan model dengan KNN memiliki eror yang paling besar. Sehingga model RF yang akan yang pilih sebagai model terbaik untuk melakukan prediksi harga diamonds.
 
-disini nilai prediksi Random Forest mendekati nilai uji walaupun nilai prediksi model Boasting juga mendekati nilai uji
+dalam tabel 3 nilai prediksi Random Forest mendekati nilai uji walaupun nilai prediksi model Boasting juga mendekati nilai uji
 
 ```
 prediksi = X_test.iloc[:1].copy()
@@ -286,5 +266,5 @@ Referensi Jurnal : <br>
 [1] M. D. H. Mela Priantika, Sari Wulandari, “Harga Emas Terhadap Minat Nasabah Berinvestasi Menggunakan Produk Tabungan Emas,” J. Penelit. Pendidik. Sos. Hum., vol. 6, no. 1, pp. 8–12, 2021, doi: 10.32696/jp2sh.v6i1.714. <br>
 [2]	M. Muharrom, “Analisis Komparasi Algoritma Data Mining Naive Bayes, K-Nearest Neighbors dan Regresi Linier Dalam Prediksi Harga Emas,” Bull. Inf. Technol., vol. 4, no. 4, pp. 430–438, 2023, doi: 10.47065/bit.v4i4.986.
 
-link [https://jurnal-lp2m.umnaw.ac.id/index.php/JP2SH/article/view/714/518]
+link [https://jurnal-lp2m.umnaw.ac.id/index.php/JP2SH/article/view/714/518] <br>
 link [https://journal.fkpt.org/index.php/BIT/article/view/986/509]
