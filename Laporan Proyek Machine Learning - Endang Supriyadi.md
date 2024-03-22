@@ -15,13 +15,9 @@ link [https://journal.fkpt.org/index.php/BIT/article/view/986/509]
 - Dari serangkaian fitur yang ada, fitur apa yang paling berpengaruh terhadap harga emas?
 - Berapa harga pasar emas dengan karakteristik atau fitur tertentu?
 2. Goals
-- Mengetahui fitur yang paling berkorelasi dengan harga emas yang nantinya akan digunakan untuk pelatihan model.
-- Membuat model machine learning yang dapat memprediksi harga emas seakurat mungkin berdasarkan fitur-fitur yang ada dengan membangun model regresi dan menggunakan metrikMean Squared Error (MSE) atau Root Mean Square Error (RMSE) untu mengukur
+- Mengetahui fitur yang paling berkorelasi dengan harga emas yang akan digunakan untuk pelatihan model dan nantinya akan menghasilkan prediksi yang akurat terkait dengan harga emas untuk melakukan investasi.
+- Membuat model machine learning yang dapat memprediksi harga emas seakurat mungkin berdasarkan fitur-fitur yang ada dengan membangun model regresi dan menggunakan metrik Mean Squared Error (MSE) atau Root Mean Square Error (RMSE) untuk mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. ini akan bahas lebih detail mengenai metrik ini di modul Evaluasi. Pengembangan model akan menggunakan beberapa algoritma machine learning yaitu K-Nearest Neighbor, Random Forest, dan Boosting Algorithm. Dari ketiga model ini, akan dipilih satu model yang memiliki nilai kesalahan prediksi terkecil. Dengan kata lain, kita akan membuat model seakurat mungkin, yaitu model dengan nilai kesalahan sekecil mungkin.
 
-3. Metodologi
-Tujuan yang ingin dicapai adalah prediksi harga emas.harga merupakan variabel kontinu artinya kita sedang menyelesaikan masalah regresi. jadi metodologi pada proyek ini adalah membagun model regresi dengan harga emas.
-4. Metrik
-Metrik digunakan adalah Mean Squared Error (MSE) atau Root Mean Square Error (RMSE). Secara umum, metrik ini mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. Kita akan bahas lebih detail mengenai metrik ini di modul Evaluasi. Pengembangan model akan menggunakan beberapa algoritma machine learning yaitu K-Nearest Neighbor, Random Forest, dan Boosting Algorithm. Dari ketiga model ini, akan dipilih satu model yang memiliki nilai kesalahan prediksi terkecil. Dengan kata lain, kita akan membuat model seakurat mungkin, yaitu model dengan nilai kesalahan sekecil mungkin.
 
 ## Data Understanding
 
