@@ -50,6 +50,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import AdaBoostRegressor
 ```
 #### Download Dataset
+dalam download dataset langsung dalam kagle harus punya api yang didapatkan di website kagle sendiri yang nantinya bisa digunakan untuk mengakses dataset itu. dengan path direktori yang telah ditentukan dan masuk ke path tersebut lalu mendownload dengan menambahkan "!" pada api dataset setelah itu mengunzip data set karena dataset yang didownload berbentuk zip
 ``` 
 os.environ['KAGGLE_CONFIG_DIR'] = "/content/gdrive/My Drive/Kaggle"
 %cd /content/gdrive/My Drive/Kaggle
