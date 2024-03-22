@@ -44,7 +44,7 @@ golds
 ```
 tabel 1 <br>
 <a href="https://ibb.co/jT5CkJp"><img src="https://i.ibb.co/1LnCGzS/Screenshot-2024-03-21-185708.png" alt="Screenshot-2024-03-21-185708" border="0"></a>
- <br>
+<br>
 Menampilkan info DataFrame dari dataset
 di gambar 1 menampilkan typedata yang nantinya sebagai acuan  kedepannya 
 ```
@@ -52,7 +52,7 @@ golds.info()
 ```
 <br>
 gambar 1 <br>
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/x5sSZTq/Screenshot-2024-03-21-224103.png" alt="Screenshot-2024-03-21-224103" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'>new logo png hd</a><br />
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/x5sSZTq/Screenshot-2024-03-21-224103.png" alt="Screenshot-2024-03-21-224103" border="0"></a><br />
 <br>
 menampilkan hasil statistik dari dataframe seperti count, mean dll
 
