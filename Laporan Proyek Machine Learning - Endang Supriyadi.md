@@ -62,20 +62,22 @@ os.environ['KAGGLE_CONFIG_DIR'] = "/content/gdrive/My Drive/Kaggle"
 
 ### Eksploratory Data
 membaca dataset
-dengan arakan path yang ada datasetnya dan tuliskan nama datasetnya sesuai script dibawah, setalah itu membaca dan menampilkan datanya. data ini masih bersifat mentah belum dibersihkan dan di filter fitur apa saja yang akan digunakan.
+dengan arakan path yang ada datasetnya dan tuliskan nama datasetnya sesuai script dibawah, setalah itu membaca dan menampilkan datanya seperti tabel 1. data ini masih bersifat mentah belum dibersihkan dan di filter fitur apa saja yang akan digunakan.
 ```
 # load the dataset
 df = '/content/gdrive/MyDrive/Kaggle/FINAL_USO.csv'
 golds = pd.read_csv(df)
 golds
 ```
+tabel 1 
 <img width="886" alt="Screenshot 2024-03-21 185708" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/461c74cd-b871-4c86-abc2-647a961e7d5c"> <br>
 Menampilkan info DataFrame dari dataset
-disini kita bisa melihat typedata yang nantinya sebagai acuan kita kedepannya 
+disini kita bisa melihat typedata yang nantinya sebagai acuan kita kedepannya gambar 1
 ```
 golds.info()
 ```
 <br>
+gambar 1
 <img width="242" alt="Screenshot 2024-03-21 224103" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/8b131c60-244c-4f65-9628-2dbfe8c6daff"> <br>
 menampilkan hasil statistik dari dataframe seperti count, mean dll
 ``` 
@@ -97,6 +99,41 @@ data open, high, low nilai massing valuenya bernilai 0 jadi dalam fitur itu tida
 
 #### Mengatasi outliers dengan IQR
 yaitu untuk mengidentifikasi outlier yang berada diluar Q1 dan Q3. nilai apapun yang berada diluar batas ini dianggap sebagai outlier
+visualisasi boxplot pada kolom open disini akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak gambar 2
+<br>
+```
+sns.boxplot(x=golds['Open'])
+```
+<br>
+gambar 2
+<img width="319" alt="image" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/f6e3c144-c231-4846-9c38-3e501c4ecbb3">
+<br>
+visualisasi boxplot pada kolom high disini akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak gambar 3<br>
+```
+sns.boxplot(x=golds['High'])
+``` 
+<br>
+gambar 3
+<img width="332" alt="image" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/f2c524ac-fa78-4e76-adc2-8f6bcf6d63f6">
+<br>
+visualisasi boxplot pada kolom low disini akan terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak gambar 4 <br>
+
+```
+sns.boxplot(x=golds['Low'])
+```
+<br>
+gambar 4
+<img width="314" alt="image" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/4a4442ec-6552-4cc3-838a-5b95617dcc93">
+<br>
+
+Untuk mengatasi outliers gunakan metode IQR. metode IQR digunakan untuk mengidentifikasi outlier yang berada di luar Q1 dan Q3. Nilai apa pun yang berada di luar batas ini dianggap sebagai outlier. 
+<br>
+persamaan IQR : 
+<br>
+Batas bawah = Q1 - 1.5 * IQR
+
+Batas atas = Q3 + 1.5 * IQR
+<br>
 ```
 Q1 = golds.quantile(0.25)
 Q3 = golds.quantile(0.75)
@@ -110,7 +147,7 @@ golds.shape
 (835, 80)
 
 ```
-menghitung korelasi antara kolom-kolom dalam dataframe goals dan menvisualisasikannya sehingga jika semakin tinggi nilai korelasi semakin kuat hubungan antara kolom target dan kolom yang bersangkutan. 
+menghitung korelasi antara kolom-kolom dalam dataframe goals dan menvisualisasikannya sehingga jika semakin tinggi nilai korelasi semakin kuat hubungan antara kolom target dan kolom yang bersangkutan. disini korelasi yang kuat itu kolom high, low, open, close dan adj close. adj close dan close nilainya sama maka boleh pilih salah satu saja. di bawah ini menngunakan target columnnya itu close
 
 ```
 target_column = 'Close'
@@ -126,7 +163,7 @@ plt.ylabel('Columns')
 plt.xticks(rotation=45)
 plt.show()
 ```
-
+gambar 5
 ![download (13)](https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/f2b98eac-8797-48df-ac6e-f967b548ed25) <br>
 
 ### Data Preparation
@@ -156,12 +193,16 @@ numerical_features = ['Open','High', 'Low']
 scaler = StandardScaler()
 scaler.fit(X_train[numerical_features])
 X_train[numerical_features] = scaler.transform(X_train.loc[:, numerical_features])
-X_train[numerical_features].head()
+X_train[numerical_features].head() <br>
+
 ```
+gambar 6
 <img width="197" alt="Screenshot 2024-03-21 224324" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/9a12223d-1810-48da-a64b-2ad2719aa286"> <br>
 ```
 X_train[numerical_features].describe().round(4)
 ```
+gambar 7
+
 <img width="176" alt="Screenshot 2024-03-21 224401" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/f475b4cd-457f-49b3-ab8d-7fedf5696c9a">
 <br>
 
@@ -177,9 +218,13 @@ yang nantinya kita akan membandingkan mana model yang efektif dalam menyelesaika
 models = pd.DataFrame(index=['train_mse', 'test_mse'], columns=['KNN', 'RandomForest', 'Boosting'])
 ```
 #### Model KNN 
-algoritma KNN menggunakan ‘kesamaan fitur’ untuk memprediksi nilai dari setiap data yang baru. 
+algoritma KNN menggunakan ‘kesamaan fitur’ untuk memprediksi nilai dari setiap data yang baru. untuk menentukan titik mana dalam data yang paling mirip dengan input baru, KNN menggunakan perhitungan ukuran jarak. metrik ukuran jarak yang juga sering dipakai antara lain: Euclidean distance dan Manhattan distance. Sebagai contoh, jarak Euclidean dihitung sebagai akar kuadrat dari jumlah selisih kuadrat antara titik a dan titik b. Dirumuskan sebagai berikut:
 
+
+$$ d(x,y) = { \sqrt{ \left( \sum_{n=1}^n (xi-yi)^2 \right) }}$$ 
+<br>
 menggunakan nilai K =10
+
 ```
 
 knn = KNeighborsRegressor(n_neighbors=10)
@@ -233,10 +278,14 @@ for name, model in model_dict.items():
     mse.loc[name, 'test'] = mean_squared_error(y_true=y_test, y_pred=model.predict(X_test))/1e3
 
 # Panggil mse
-mse
+Mean Squared Error (MSE) metrik ini mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. 
 ```
+tabel 2
+<br>
 <img width="163" alt="Screenshot 2024-03-21 224441" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/5a7ef6f9-9ead-437d-95c4-c73dfec478ab">
 <br>
+
+
 nilai error yang paling kecil yaitu random forest
 
 disini nilai prediksi Random Forest mendekati nilai uji walaupun nilai prediksi model Boasting juga mendekati
@@ -249,5 +298,7 @@ for name, model in model_dict.items():
 
 pd.DataFrame(pred_dict)
 ```
+tabel 3 <br>
+
 <img width="289" alt="Screenshot 2024-03-21 224627" src="https://github.com/EndangSupriyadi/Proyek_Pertama_Machine_Learning_Terapan/assets/103325979/04bafd8d-178b-4d99-877a-a66fcbcaac42"> <br>
 Terlihat bahwa prediksi dengan Random Forest (RF) memberikan hasil yang paling mendekati.
