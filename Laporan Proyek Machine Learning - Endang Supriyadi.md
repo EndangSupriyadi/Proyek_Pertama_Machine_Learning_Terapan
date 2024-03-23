@@ -76,8 +76,7 @@ Max adalah nilai maksimum.<br>
 
 #### _Univariate Analysis_
 
-Dalam Dataset ini hanya ada satu kategori yaitu Date dan numeriknya ada 6 yaitu Open, High, Low, Close, Adj Close dan Volume
-sehingga data yang ditampilkan berdasarkan waktu / Date, terlihat pada gambar 5.
+Dalam Dataset ini berisikan time series setiap harga emas per tanggalnya. sehingga perlu diubah type data dari date yang tadinya object menjadi date agar bisa digunakan dan divisualisasikan dengan harga close emas.
 <br>
 gambar 5 
 <br>
