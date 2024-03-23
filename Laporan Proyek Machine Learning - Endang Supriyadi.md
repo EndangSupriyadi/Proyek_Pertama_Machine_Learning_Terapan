@@ -153,16 +153,36 @@ algoritma KNN menggunakan ‘kesamaan fitur’ untuk memprediksi nilai dari seti
 
 $$ d(x,y) = { \sqrt{ \left( \sum_{n=1}^n (xi-yi)^2 \right) }}$$ 
 <br>
-
+Parameter yang digunakan :
+- n_neighbors: Jumlah tetangga yang akan digunakan untuk membuat prediksi.
+- weights: Cara memberi bobot pada tetangga. Misalnya, "uniform" memberi bobot yang sama pada semua tetangga, sementara "distance" memberi bobot yang lebih besar pada tetangga yang lebih dekat.
+- metric: Metrik jarak yang digunakan untuk mengukur kedekatan antara titik data.
 
 #### Model Random Forest
 boosting, algoritma ini bertujuan untuk meningkatkan performa atau akurasi prediksi. Caranya adalah dengan menggabungkan beberapa model sederhana dan dianggap lemah (weak learners) sehingga membentuk suatu model yang kuat (strong ensemble learner). Ada dua teknik pendekatan dalam membuat model ensemble, yaitu bagging dan boosting. Jangan bingung dulu dengan istilah ini ya. Kita akan bahas satu per satu. Bagging atau bootstrap aggregating adalah teknik yang melatih model dengan sampel random. Dalam teknik bagging, sejumlah model dilatih dengan teknik sampling with replacement (proses sampling dengan penggantian)
 
+Parameter yang digunakan :
+- n_estimators: Jumlah pohon keputusan yang akan dibangun dalam ensemble.
+- max_depth: Kedalaman maksimum setiap pohon keputusan dalam ensemble.
+- min_samples_split: Jumlah sampel minimum yang diperlukan untuk membagi node dalam pohon.
+- min_samples_leaf: Jumlah sampel minimum yang diperlukan di leaf node dalam pohon.
 
 #### Model Boosting Algorithm
 boosting, algoritma ini bertujuan untuk meningkatkan performa atau akurasi prediksi. Caranya adalah dengan menggabungkan beberapa model sederhana dan dianggap lemah (weak learners) sehingga membentuk suatu model yang kuat (strong ensemble learner). Algoritma boosting muncul dari gagasan mengenai apakah algoritma yang sederhana seperti linear regression dan decision tree dapat dimodifikasi untuk dapat meningkatkan performa. Algoritma yang menggunakan teknik boosting bekerja dengan membangun model dari data latih. Kemudian ia membuat model kedua yang bertugas memperbaiki kesalahan dari model pertama. Model ditambahkan sampai data latih terprediksi dengan baik atau telah mencapai jumlah maksimum model untuk ditambahkan. 
 
+Parameter yang digunakan :
+- n_estimators: Jumlah pohon keputusan yang akan dibangun dalam ensemble.
+- learning_rate: Tingkat pembelajaran (learning rate) yang mengontrol kontribusi setiap pohon terhadap model.
+- max_depth: Kedalaman maksimum setiap pohon keputusan dalam ensemble.
+- subsample: Fraksi sampel yang akan digunakan untuk pelatihan setiap pohon.
+- colsample_bytree: Fraksi fitur yang akan digunakan untuk pelatihan setiap pohon.
+  
 dengan membandingkan ketiga model itu untuk mengetahui model mana yang lebih akurat dalam menangani kasus ini dengan menggunakan metrik mse bisa mengentahui seberapa besar error dari model ketiga itu
+
+Alasan menggunakan tiga algoritma yaitu KNN, Random Forest dan Boosting : <br>
+1. KNN adalah algoritma yang sederhana dan intuitif, serta mudah dipahami. Ini dapat digunakan untuk melakukan regresi (misalnya, memprediksi harga emas berikutnya berdasarkan data historis).
+2. Random Forest adalah metode ensemble yang kuat yang terdiri dari sejumlah besar pohon keputusan. Hal ini sangat efektif dalam menangani overfitting, menangani data yang tidak seimbang, serta dalam menangani data dengan jumlah fitur yang besar.
+3. Boosting adalah teknik ensemble yang memperbaiki kinerja model dengan cara berurutan memperbaiki kesalahan prediksi model sebelumnya. Model ini biasanya memberikan kinerja yang sangat baik dalam berbagai masalah prediksi.
 
 ### _Evaluation_
 Metrik digunakan untuk mengevaluasi seberapa baik model dalam memprediksi harga. Untuk kasus regresi, beberapa metrik yang biasanya digunakan adalah Mean Squared Error (MSE) atau Root Mean Square Error (RMSE). Secara umum, metrik ini mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. <br>
@@ -192,6 +212,8 @@ gambar 12 <br>
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/mHq9FTD/Screenshot-2024-03-21-224627.png" alt="Screenshot-2024-03-21-224627" border="0"></a>
 <br>
+
+Proyek ini berhasil karena mendapatkan solusi dari masalah yang ingin diselesaikan dengan mencoba fitur mana saja yang dapat digunakan dalam proyek ini dan mengetahui model mana yang bisa lebih akurat dalam memprediksi harga emas. dengan Model Random Forest bisa lebih akurat dalam memprediksi harga emas karena nilai dari MSE nya lebih kecil dari pada KNN dan Boosting.
 
 Kesimpulannya <br>
 1. fitur yang paling berpengaruh yaitu fitur close dan adj close karena memiliki korelasi yang sangat kuat terhadao fitur open , high , dan low.
