@@ -13,12 +13,12 @@ Kontribusi dari penerapan _machine learning_ dalam memprediksi harga emas adalah
 - Berapa harga pasar emas dengan karakteristik atau fitur tertentu?
 2. _Goals_
 - Mengetahui fitur yang paling berkorelasi dengan harga emas yang akan digunakan untuk pelatihan model dan nantinya akan menghasilkan prediksi yang akurat terkait dengan harga emas untuk melakukan investasi.
-- Membuat model machine learning yang dapat memprediksi harga emas seakurat mungkin berdasarkan fitur-fitur yang ada dengan membangun model regresi dan menggunakan metrik Mean Squared Error (MSE) atau Root Mean Square Error (RMSE) untuk mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. 
+- Membuat model machine learning yang dapat memprediksi harga emas seakurat mungkin berdasarkan fitur-fitur yang ada dengan membangun model regresi dan menggunakan metrik _Mean Squared Error_ (MSE) atau _Root Mean Square Error_ (RMSE) untuk mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya. 
 
 
 ## _Data Understanding_
 
-Data historis yang diambil dari Yahoo Finance untuk Gold ETF memiliki 7 kolom: Tanggal, Open, High, Low, Close, Adjusted Close, dan Volume. Berikut penjelasan mengenai variabel data tersebut:
+Data historis yang diambil dari Yahoo Finance untuk _Gold ETF_ memiliki 7 kolom: Tanggal, Open, High, Low, Close, Adjusted Close, dan Volume. Berikut penjelasan mengenai variabel data tersebut:
 - Tanggal (Date): Ini adalah tanggal perdagangan untuk setiap data historis.
 - Open: Harga pembukaan Gold ETF pada hari tersebut.
 - High: Harga tertinggi Gold ETF yang dicapai pada hari tersebut.
@@ -117,15 +117,15 @@ gambar 2
 <br>
 
 
-### Data Preparation
+### _Data Preparation_
 <br>
 melakukan transformasi pada data sehingga menjadi bentuk yang cocok untuk proses pemodelan
 
 Cek Nilai _Missing Value_
 dengan" .sum() akan menampilkan data _missing value_. _missing value_ merupakan nilai yang tidak ada atau NaNN yang ada di dataset. _missing value_ bisa mempengaruhi kualiatas prediksi model sehingga harus dihapus atau ganti dengan nilai mean, count, dll. lalu mencek nilai _missing value_ dari kolom open, high dan low.
 
-#### Mengatasi outliers dengan IQR
-yaitu untuk mengidentifikasi outlier yang berada diluar Q1 dan Q3. nilai apapun yang berada diluar batas ini dianggap sebagai outlier dengan perintah "sns.boxplot()" akan menampilkan visualisasi boxplot. boxplot terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak. 
+#### Mengatasi _outliers_ dengan IQR
+yaitu untuk mengidentifikasi _outlier_ yang berada diluar Q1 dan Q3. nilai apapun yang berada diluar batas ini dianggap sebagai _outlier_ dengan perintah "sns.boxplot()" akan menampilkan visualisasi boxplot. boxplot terlihat apakah ada nilai outliers bisa dilihat dari lingkaran yang berjarak. 
 
 visualisasi boxplot pada kolom open di gambar 3 terlihat ada lingkaran yang berjarak
 <br>
@@ -143,7 +143,7 @@ gambar 5 <br>
 <a href="https://ibb.co/hB70Pv5"><img src="https://i.ibb.co/gSjY5C1/Screenshot-2024-03-23-001128.png" alt="Screenshot-2024-03-23-001128" border="0"></a>
 <br>
 
-Untuk mengatasi outliers gunakan metode IQR. metode IQR digunakan untuk mengidentifikasi outlier yang berada di luar Q1 dan Q3. Nilai apa pun yang berada di luar batas ini dianggap sebagai outlier. 
+Untuk mengatasi _outliers_ gunakan metode IQR. metode IQR digunakan untuk mengidentifikasi _outlier_ yang berada di luar Q1 dan Q3. Nilai apa pun yang berada di luar batas ini dianggap sebagai outlier. 
 <br>
 persamaan IQR : 
 <br>
@@ -199,7 +199,7 @@ Tabel 5
 Pengembangan model akan menggunakan beberapa algoritma machine learning yaitu _K-Nearest Neighbor, Random Forest, dan Boosting Algorithm._ Dari ketiga model ini, akan dipilih satu model yang memiliki nilai kesalahan prediksi terkecil. Dengan kata lain, dengan membuat model seakurat mungkin, yaitu model dengan nilai kesalahan sekecil mungkin.
 
 #### Model _KNN_
-algoritma KNN menggunakan ‘kesamaan fitur’ untuk memprediksi nilai dari setiap data yang baru. untuk menentukan titik mana dalam data yang paling mirip dengan input baru, KNN menggunakan perhitungan ukuran jarak. metrik ukuran jarak yang juga sering dipakai antara lain: Euclidean distance dan Manhattan distance. Sebagai contoh, jarak Euclidean dihitung sebagai akar kuadrat dari jumlah selisih kuadrat antara titik a dan titik b. Dirumuskan sebagai berikut: <br>
+algoritma _KNN_ menggunakan ‘kesamaan fitur’ untuk memprediksi nilai dari setiap data yang baru. untuk menentukan titik mana dalam data yang paling mirip dengan input baru, _KNN_ menggunakan perhitungan ukuran jarak. metrik ukuran jarak yang juga sering dipakai antara lain: _Euclidean distance_ dan _Manhattan distance_. Sebagai contoh, jarak _Euclidean_ dihitung sebagai akar kuadrat dari jumlah selisih kuadrat antara titik a dan titik b. Dirumuskan sebagai berikut: <br>
 
 
 $$ d(x,y) = { \sqrt{ \left( \sum_{n=1}^n (xi-yi)^2 \right) }}$$ 
