@@ -81,7 +81,7 @@ Dalam Dataset ini berisikan time series setiap harga emas per tanggalnya. sehing
 gambar 5 
 <br>
 
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/7Qs3Rjg/Screenshot-2024-03-23-052342.png" alt="Screenshot-2024-03-23-052342" border="0"></a>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/7Qs3Rjg/Screenshot-2024-03-23-052342.png" alt="Screenshot-2024-03-23-052342" border="0"></a><a href="https://ibb.co/s96FRML"><img src="https://i.ibb.co/PG95jfB/Screenshot-2024-03-23-123452.png" alt="Screenshot-2024-03-23-123452" border="0"></a>
 <br>
 
 
