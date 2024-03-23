@@ -64,14 +64,14 @@ gambar 4 <br>
 <a href="https://ibb.co/G0gz16s"><img src="https://i.ibb.co/rmnDLjb/Screenshot-2024-03-23-045627.png" alt="Screenshot-2024-03-23-045627" border="0"></a>
 <br>
 penjelasan : <br>
-Count  adalah jumlah sampel pada data.
-Mean adalah nilai rata-rata.
-Std adalah standar deviasi.
-Min yaitu nilai minimum setiap kolom. 
-25% adalah kuartil pertama. Kuartil adalah nilai yang menandai batas interval dalam empat bagian sebaran yang sama. 
-50% adalah kuartil kedua, atau biasa juga disebut median (nilai tengah).
-75% adalah kuartil ketiga.
-Max adalah nilai maksimum.
+Count  adalah jumlah sampel pada data. <br>
+Mean adalah nilai rata-rata. <br>
+Std adalah standar deviasi. <br>
+Min yaitu nilai minimum setiap kolom. <br>
+25% adalah kuartil pertama. Kuartil adalah nilai yang menandai batas interval dalam empat bagian sebaran yang sama. <br>
+50% adalah kuartil kedua, atau biasa juga disebut median (nilai tengah). <br>
+75% adalah kuartil ketiga.<br>
+Max adalah nilai maksimum.<br>
 <br>
 
 #### _Univariate Analysis_
